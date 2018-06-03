@@ -109,6 +109,37 @@ TEST(SortingTest, SortStringBySize) {
 	}
 }
 
+TEST(SortingTest, SortStringByDefaultComparator) {
+
+	std::string arr[8] = {
+		"ccc",
+		"ggggggg",
+		"eeeee",
+		"bb",
+		"hhhhhhhh",
+		"dddd",
+		"a",
+		"ffffff"
+	};
+
+	std::string sarr[8] = {
+		"a",
+		"bb",
+		"ccc",
+		"dddd",
+		"eeeee",
+		"ffffff",
+		"ggggggg",
+		"hhhhhhhh"
+	};
+
+	quickSort<std::string>(arr, 7, true);
+	
+	for (int i = 0; i < 8; i++) {
+		ASSERT_EQ(arr[i], sarr[i]);
+	}
+}
+
 int main(int argc, char** argv) {
 	testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();
